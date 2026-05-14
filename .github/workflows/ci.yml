@@ -1,0 +1,19 @@
+# .github/workflows/ci.yml
+
+name: My First CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Print Hello
+        run: echo "Hello CI/CD"

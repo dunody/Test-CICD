@@ -1,0 +1,30 @@
+# .github/workflows/automation.yml
+
+name: My Automation Pull Request
+
+on:
+  pull_request_target:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.14.5'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install python-dotenv
+
+      - name: Execute Script
+        run: python main.py
+        env:
+          CID: ${{ secrets.CID }} 
